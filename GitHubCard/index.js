@@ -58,8 +58,10 @@ followersArray.forEach( user => {
     const data = res.data;
     const cardContainer = document.querySelector('.cards');
     cardContainer.append(gitCard(data))
-  }
-    )
+  })
+  .catch(err => {
+    console.log(err);
+  })
 })
 
 
@@ -110,7 +112,7 @@ function gitCard(gitObj) {
   cardInfo.append(userName);
 
   const userLocation = document.createElement('p');
-  userLocation.textContent = location;
+  userLocation.textContent = `Location: ${location}`;
   cardInfo.append(userLocation);
 
   const profile = document.createElement('p');
@@ -124,11 +126,11 @@ function gitCard(gitObj) {
   
 
   const followerCount = document.createElement('p');
-  followerCount.textContent = followers;
+  followerCount.textContent = `Followers: ${followers}`;
   cardInfo.append(followerCount);
 
   const followingCount = document.createElement('p');
-  followingCount.textContent = following;
+  followingCount.textContent = `Following: ${following}`;
   cardInfo.append(followingCount);
 
   const biography = document.createElement('p');
