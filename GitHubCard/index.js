@@ -10,7 +10,7 @@ axios
   console.log(res.data);
 })
 .catch(err => {
-  console.log(err)
+  console.log(err);
 })
 
 /*
@@ -25,6 +25,7 @@ axios
   STEP 4: Pass the data received from Github into your function,
     and append the returned markup to the DOM as a child of .cards
 */
+
 
 /*
   STEP 5: Now that you have your own card getting added to the DOM, either
@@ -58,6 +59,44 @@ const followersArray = [];
       </div>
     </div>
 */
+
+function gitCard(gitObj) {
+
+  const { avatar_url, name, login, location, url, followers, following, bio } = gitObj
+
+  const card = document.createElement('div');
+  card.classList.add('card')
+
+  const image = document.createElement('img');
+  image.src = avatar_url;
+  card.append(image);
+
+  const cardInfo = document.createElement('div');
+  cardInfo.classList.add('card-info');
+  card.append(cardInfo)
+
+  const realName = document.createElement('h3');
+  realName.classList.add('name');
+  realName.textContent = name;
+  cardInfo.append(realName);
+
+  // const userName = document.createElement('p');
+
+  // const profileLink = document.createElement('a');
+
+  // const location = document.createElement('p');
+
+  // const profile = document.createElement('p');
+
+  // const followers = document.createElement('p');
+
+  // const following = document.createElement('p');
+
+  // const bio = document.createElement('p');
+
+
+  return card;
+}
 
 /*
   List of LS Instructors Github username's:
