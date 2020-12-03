@@ -7,10 +7,13 @@ import axios from 'axios';
 axios
 .get ("https://api.github.com/users/NRHietala")
 .then(res => {
-  console.log(res.data);
+  const data = res.data;
+  const cardContainer = document.querySelector('.cards');
+  cardContainer.append(gitCard(data));
+
 })
 .catch(err => {
-  console.log(err);
+  console.log(err)
 })
 
 /*
@@ -80,19 +83,36 @@ function gitCard(gitObj) {
   realName.textContent = name;
   cardInfo.append(realName);
 
-  // const userName = document.createElement('p');
+  const userName = document.createElement('p');
+  userName.classList.add('username');
+  userName.textContent = login;
+  cardInfo.append(userName);
 
-  // const profileLink = document.createElement('a');
+  const userLocation = document.createElement('p');
+  userLocation.textContent = location;
+  cardInfo.append(userLocation);
 
-  // const location = document.createElement('p');
+  const profile = document.createElement('p');
+  profile.textContent = profileLink;
+  cardInfo.append(profile);
 
-  // const profile = document.createElement('p');
+  const profileLink = document.createElement('a');
+  profileLink.href = url;
+  profile.appendChild(profileLink);
+  // profile.textContent = url;
+  
 
-  // const followers = document.createElement('p');
+  const followerCount = document.createElement('p');
+  followerCount.textContent = followers;
+  cardInfo.append(followerCount);
 
-  // const following = document.createElement('p');
+  const followingCount = document.createElement('p');
+  followingCount.textContent = following;
+  cardInfo.append(followingCount);
 
-  // const bio = document.createElement('p');
+  const biography = document.createElement('p');
+  biography.textContent = bio;
+  cardInfo.append(biography);
 
 
   return card;
